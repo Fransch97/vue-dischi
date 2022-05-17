@@ -31,7 +31,9 @@ export default {
                 console.log(api.data.response);
                 this.cards = api.data.response;
                 console.log(this.cards, "le card");
-                this.loader = true
+                setTimeout(() => {
+                     this.loader = true
+                    }, 3000);
             });
         }
     },
