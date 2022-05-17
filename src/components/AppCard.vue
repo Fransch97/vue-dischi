@@ -1,13 +1,17 @@
 <template>
   <div class="card-sc">
-      <img src="https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg" alt="">
-      <p>New Jersey</p>
-      <span>Bon Jovi</span>
+      <img :src="card.poster" alt="card.title" :class="card.genre">
+      <p>{{card.title}}</p>
+      <span>{{card.author}}</span>
   </div>
 </template>
 
 <script>
 export default {
+    name: "AppCard",
+    props:{
+        card: Object
+    }
 
 }
 </script>

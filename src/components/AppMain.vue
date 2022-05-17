@@ -1,7 +1,7 @@
 <template>
 <main>
     <div class="container main">
-        <AppCard/>
+        <AppCard v-for="(obj, ind) in cards"  :key="`card-${ind}`" :card="obj"/>
     </div>
 </main>
   
