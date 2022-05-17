@@ -1,6 +1,6 @@
 <template>
 <main>
-    <div v-if="loader" class="container main">
+    <div v-if="loaded" class="container main">
         <AppCard v-for="(obj, ind) in cards"  :key="`card-${ind}`" :card="obj"/>
     </div>
     <div v-else class="loader">
