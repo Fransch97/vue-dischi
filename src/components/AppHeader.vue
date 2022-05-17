@@ -21,5 +21,7 @@ export default {
 </script>
 
 <style lang="scss" >
-@import "../assets/styles/header"
+@import "../assets/styles/header";
+@import "../assets/styles/global";
+
 </style>
