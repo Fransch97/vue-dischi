@@ -1,0 +1,21 @@
+.card-sc{
+    width: 250px;
+    height: 400px;
+    background-color: #2e3a46;
+    padding: 20px;
+    text-align: center;
+    img{
+        width: 100%;
+    }
+    p{
+        color: white;
+        text-transform: uppercase;
+        padding: 20px;
+        margin: 0;
+        font-size: 20px;
+    }
+    span{
+        font-size: 20px;
+        color: #827d7a;
+    }
+}
