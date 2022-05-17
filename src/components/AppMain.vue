@@ -1,7 +1,10 @@
 <template>
 <main>
-    <div class="container main">
+    <div v-if="loader" class="container main">
         <AppCard v-for="(obj, ind) in cards"  :key="`card-${ind}`" :card="obj"/>
+    </div>
+    <div v-else class="loader">
+        <AppLoader />
     </div>
 </main>
   
@@ -10,13 +13,15 @@
 <script>
 import  axios from "axios";
 import AppCard from "./AppCard.vue";
+import AppLoader from "./AppLoader.vue";
 export default {
     name: "AppMain",
     comments: "axios",
     data() {
         return {
             url: "https://flynn.boolean.careers/exercises/api/array/music",
-            cards: Array
+            cards: Array,
+            loader: false
         };
     },
     methods: {
@@ -26,13 +31,14 @@ export default {
                 console.log(api.data.response);
                 this.cards = api.data.response;
                 console.log(this.cards, "le card");
+                this.loader = true
             });
         }
     },
     mounted() {
         this.api();
     },
-    components: { AppCard }
+    components: { AppCard, AppLoader }
 }
 </script>
 
@@ -44,5 +50,8 @@ main{
         justify-content: space-between;
         flex-wrap: wrap;
     }
+    .loader{
+        text-align: center;
+}
 }
 </style>
