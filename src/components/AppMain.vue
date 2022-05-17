@@ -21,7 +21,7 @@ export default {
         return {
             url: "https://flynn.boolean.careers/exercises/api/array/music",
             cards: Array,
-            loader: false
+            loaded: false
         };
     },
     methods: {
@@ -32,7 +32,7 @@ export default {
                 this.cards = api.data.response;
                 console.log(this.cards, "le card");
                 setTimeout(() => {
-                     this.loader = true
+                     this.loaded = true
                     }, 3000);
             });
         }
