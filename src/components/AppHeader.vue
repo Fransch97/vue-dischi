@@ -3,8 +3,9 @@
     <div class="logo">
       <img :src="img" alt="">
       </div>
-    <select class="form-select sele-sc" aria-label="Default select example">
-      <option selected>Seleziona un genere</option>
+    <select v-model="selectedOption" @change="$emit('custom', selectedOption)" class="form-select sele-sc" aria-label="Default select example">
+      <option v-for="(el, index) in options" :key="`opt-${index}`" :value="el">{{el}}</option>
+  
     </select> 
   </header>
 </template>
@@ -12,9 +13,14 @@
 <script>
 export default {
     name: "AppHeader",
+    props:{
+      options: Array
+    },
     data(){
       return{
-        img: require("../assets/img/spt.png")
+        img: require("../assets/img/spt.png"),
+        selectedOption: "All"
+        
       }
     }
 }

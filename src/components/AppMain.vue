@@ -1,46 +1,23 @@
 <template>
 <main>
-    <div v-if="loaded" class="container main">
+    <div  class="container main">
         <AppCard v-for="(obj, ind) in cards"  :key="`card-${ind}`" :card="obj"/>
     </div>
-    <div v-else class="loader">
-        <AppLoader />
-    </div>
+    
 </main>
   
 </template>
 
 <script>
-import  axios from "axios";
 import AppCard from "./AppCard.vue";
-import AppLoader from "./AppLoader.vue";
 export default {
+    components: { AppCard,  },
     name: "AppMain",
-    comments: "axios",
-    data() {
-        return {
-            url: "https://flynn.boolean.careers/exercises/api/array/music",
+    props:{
             cards: Array,
-            loaded: false
-        };
     },
-    methods: {
-        api() {
-            axios.get(this.url)
-                .then(api => {
-                console.log(api.data.response);
-                this.cards = api.data.response;
-                console.log(this.cards, "le card");
-                setTimeout(() => {
-                     this.loaded = true
-                    }, 3000);
-            });
-        }
-    },
-    mounted() {
-        this.api();
-    },
-    components: { AppCard, AppLoader }
+    
+    
 }
 </script>
 
