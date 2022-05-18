@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <AppHeader @custom="valoreSelct" :optionsGenere="arrayGenere" :optionsAuthor="arrayAuthor"/>
-    <AppMain :cards="aggiornaArray"  />
+    <AppHeader @generes="valoreSelctGen" :optionsGenere="arrayGenere" :optionsAuthor="arrayAuthor"/>
+    <AppMain @authors="valorSelectAutors" :cards="aggiornaArray"  />
   </div>
 </template>
 
@@ -18,13 +18,14 @@ export default {
             arrayResponse: [],
             arrayGenere: ["All"],
             arrayAuthor: ["Authors"],
-            selOpt:"All"
+            selOpt:"All",
+            selAut:"Authors"
       }
     },
 
     computed: {
       aggiornaArray(){
-      return this.arrayResponse.filter(obj=> obj.genre.includes(this.selOpt) ||  this.selOpt === "All"  )
+      return this.arrayResponse.filter(obj=> (obj.genre.includes(this.selOpt) || this.selOpt === "All") && (obj.author.includes(this.selAut) || this.selAut === "Authors"))
       }
     },
 
@@ -45,8 +46,13 @@ export default {
         });
 
       },
-      valoreSelct(valore){
+      valoreSelctGen(valore){
         this.selOpt = valore
+        console.log("sono ", this.selOpt)
+      },
+      valorSelectAutors(valore){
+        this.selAut = valore
+        console.log("sono ", this.selAut)
       }
     },
 
