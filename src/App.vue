@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <AppHeader @custom="valoreSelct" :options="arrayGenere"/>
+    <AppHeader @custom="valoreSelct" :optionsGenere="arrayGenere" :optionsAuthor="arrayAuthor"/>
     <AppMain :cards="aggiornaArray"  />
   </div>
 </template>
@@ -17,6 +17,7 @@ export default {
             url: "https://flynn.boolean.careers/exercises/api/array/music",
             arrayResponse: [],
             arrayGenere: ["All"],
+            arrayAuthor: ["Authors"],
             selOpt:"All"
       }
     },
@@ -36,6 +37,14 @@ export default {
         });
 
       },
+      filterAuthor(array, genere){
+        array.forEach(element => {
+          if(!(genere.includes(element.author))){
+            genere.push(element.author);
+          }
+        });
+
+      },
       valoreSelct(valore){
         this.selOpt = valore
       }
@@ -47,6 +56,7 @@ export default {
         console.log(r.data.response);
         this.arrayResponse = r.data.response;
         this.filterGen(this.arrayResponse, this.arrayGenere);
+        this.filterAuthor(this.arrayResponse, this.arrayAuthor)
       }
       )
     },
