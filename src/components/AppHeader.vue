@@ -5,11 +5,20 @@
     </div>
     
     <div class="selectores">
-      <select v-model="selectedOption" @change="$emit('generes', selectedOption)" class="form-select sele-sc" aria-label="Default select example">
+      <select
+        name="selectedOption" 
+        v-model="selectedOption" 
+        @change="$emit('generes', selectedOption)" 
+        class="form-select sele-sc" >
         <option v-for="(el, index) in optionsGenere" :key="`opt-${index}`" :value="el">{{el}}</option>
       </select> 
-      <select v-model="selectedAuthor" @change="$emit('authors', selectedAuthor)" class="form-select sele-sc" aria-label="Default select example">
-        <option v-for="(el, index) in optionsAuthor" :key="`bana-${index}`" :value="el">{{el}}</option>
+      <select 
+        name="selectedAuthor" 
+        v-model="selectedAuthor" 
+        @change="$emit('authors', selectedAuthor)" 
+        class="form-select sele-sc" 
+      >
+        <option v-for="(el, index) in optionsAuthor" :key="`autor-${index}`" :value="el">{{el}}</option>
     
       </select>
     </div>
@@ -26,11 +35,11 @@ export default {
     data(){
       return{
         img: require("../assets/img/spt.png"),
-        selectedOptionOne: "All",
+        selectedOption: "All",
         selectedAuthor: "Authors"
         
       }
-    }
+    },
 }
 </script>
 

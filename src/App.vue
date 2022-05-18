@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <AppHeader @generes="valoreSelctGen" :optionsGenere="arrayGenere" :optionsAuthor="arrayAuthor"/>
-    <AppMain @authors="valorSelectAutors" :cards="aggiornaArray"  />
+    <AppHeader @generes="valoreSelctGen" @authors="valoreSelectAutors" :optionsGenere="arrayGenere" :optionsAuthor="arrayAuthor"/>
+    <AppMain  :cards="aggiornaArray"  />
   </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
             arrayGenere: ["All"],
             arrayAuthor: ["Authors"],
             selOpt:"All",
-            selAut:"Authors"
+            selAut:"Authors",
       }
     },
 
@@ -50,9 +50,9 @@ export default {
         this.selOpt = valore
         console.log("sono ", this.selOpt)
       },
-      valorSelectAutors(valore){
-        this.selAut = valore
-        console.log("sono ", this.selAut)
+      valoreSelectAutors(valori){
+        // this.selAut = valori
+        console.log("sono ", valori)
       }
     },
 
